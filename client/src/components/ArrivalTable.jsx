@@ -1,5 +1,4 @@
 import React from "react";
-import { getArrivalLookUpTable } from "../../utils/arrivalTable";
 import Table from "./Table";
 import { useEffect, useState } from "react";
 
@@ -9,7 +8,6 @@ const ArrivalTable = (arrivalTableProps) => {
     "Cumulative Probability",
     "Inter-arrival time",
   ];
-  // const arrivalTableBody = getArrivalLookUpTable(meanArrival);
 
   const [arrivalTableBody, setArrivalTableBody] = useState([]);
 

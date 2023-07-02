@@ -3,6 +3,7 @@ import ArrivalTable from "./ArrivalTable";
 import SimulationTable from "./SimulationTable";
 import InputBox from "./InputBox";
 import { EXP_POIS_RAND_DIST } from "../../utils/constants";
+import { headingStyle } from "../styles";
 
 const Main = () => {
   const [meanArrival, setMeanArrival] = useState(0);
@@ -39,7 +40,7 @@ const Main = () => {
   return (
     <div className="flex-grow flex justify-center items-center">
       <div className="w-3/4 h-full box-border">
-        <div className="flex flex-col justify-center items-center p-3 gap-4 w-full">
+        <div className="flex flex-col justify-center items-center p-3 gap-4 w-full font-quicksand uppercase">
           <InputBox
             displayResult={displayResult}
             arrivalDistType={arrivalDistType}
@@ -55,15 +56,15 @@ const Main = () => {
           />
           {displayResult ? (
             <>
-              <h3 className="mt-10 text-lg font-bold underline uppercase">
-                Inter-Arrival Lookup Table:
+              <h3 className={headingStyle}>
+                Inter-Arrival Lookup Table
               </h3>
               <ArrivalTable
                 meanArrival={meanArrival}
                 arrivalDistType={arrivalDistType}
                 varianceArrival={varianceArrival}
               />
-              <h3 className="mt-10 text-lg font-bold underline uppercase">
+              <h3 className={headingStyle}>
                 Simulation Table:
               </h3>
               <SimulationTable
@@ -82,7 +83,7 @@ const Main = () => {
           )}
           <button
             type="button"
-            className="text-gray-900 w-min hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            className="text-primary w-min hover:text-secondary border border-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-secondary font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
             onClick={handleInputForm}
           >
             {displayResult ? "Clear" : "Calculate"}

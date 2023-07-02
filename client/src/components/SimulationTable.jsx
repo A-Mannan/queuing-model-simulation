@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getSimulationTable } from "../../utils/simulationTable";
 import Table from "./Table";
 import GanttChart from "./GanttChart";
 import AveragesDisplay from "./AveragesDisplay";
+import { headingStyle } from "../styles";
 
 const SimulationTable = (simulationTableProps) => {
   const simulationTableHeaders = [
@@ -17,14 +17,6 @@ const SimulationTable = (simulationTableProps) => {
     "Turn Around Time",
     "Waiting Time",
   ];
-  // const { simulationTable: simulationTableBody, servers } = getSimulationTable({
-  //   meanArrival,
-  //   meanService,
-  //   numOfServers,
-  //   numOfObservations,
-  //   arrivalDistType,
-  //   serviceDistType,
-  // });
 
   const [simulationTableBody, setSimulationTableBody] = useState([]);
   const [servers, setServers] = useState([]);
@@ -87,26 +79,26 @@ const SimulationTable = (simulationTableProps) => {
         tableBody={simulationTableBody}
         includeIndex={true}
       />
-      <div>
-        <h3 className="text-center mt-10 text-lg font-bold underline uppercase">
-          Gantt Chartt :
+      <div className="flex flex-col justify-center items-center">
+        <h3 className={`text-centermt-10 ${headingStyle}`}>
+          Gantt Chartt
         </h3>
         {servers.map((server, serverIndex) => (
-          <div className="inline">
-            <h4>Server {serverIndex}: </h4>
+          <div className="flex text-center">
+            <h4 className="relative top-6 px-4 uppercase">Server {serverIndex}: </h4>
             <GanttChart server={server} />
           </div>
         ))}
       </div>
-      <div>
-        <h3 className="my-10 text-lg font-bold underline uppercase">
-          Results Interpretation :
+      <div className="flex flex-col justify-center items-center mt-6">
+        <h3 className={`my-10 ${headingStyle}`}>
+          Results Interpretation
         </h3>
         <AveragesDisplay averages={simulationAverages} />
       </div>
-      <div>
-        <h3 className="my-10 text-lg font-bold underline uppercase">
-          Calculations using Formulas :
+      <div className="flex flex-col justify-center items-center mt-6">
+        <h3 className={`my-10 ${headingStyle}`}>
+          Calculations using Formulas
         </h3>
         <AveragesDisplay averages={formulaAverages} />
       </div>

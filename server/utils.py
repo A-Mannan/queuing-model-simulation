@@ -10,16 +10,18 @@ def get_service_time(
     service_variance,
 ):
     if service_dist_type == const.EXP_POIS_RAND_DIST:
-        return np.random.exponential(scale=1 / service_mean)
+        return abs(np.random.exponential(scale=1 / service_mean))
     if service_dist_type == const.NORMAL_DIST:
-        return np.random.normal(loc=service_mean, scale=math.sqrt(service_variance))
+        return abs(
+            np.random.normal(loc=service_mean, scale=math.sqrt(service_variance))
+        )
     if service_dist_type == const.UNIFORM_DIST:
         a = service_mean - math.sqrt(3 * service_variance)
         b = service_mean + math.sqrt(3 * service_variance)
-        return stats.uniform.cdf(low=a, high=b)
+        return abs(np.random.uniform(low=a, high=b))
     shape = service_mean**2 / service_variance
     scale = service_variance / service_mean
-    return np.random.gamma(shape, scale)
+    return abs(np.random.gamma(shape, scale))
 
 
 def calculate_cdf(x, arrival_dist_type, arrival_mean, arrival_variance):

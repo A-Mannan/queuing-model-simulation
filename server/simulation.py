@@ -16,6 +16,7 @@ NUM_OF_RECORDS = 10
 
 def construct_simulation_table(
     num_of_servers,
+    num_of_observations,
     arrival_dist_type,
     arrival_mean,
     service_dist_type,
@@ -41,7 +42,7 @@ def construct_simulation_table(
         ]
     )
 
-    for row_index in range(NUM_OF_RECORDS):
+    for row_index in range(num_of_observations):
         df_simulation_table.loc[row_index, "arrival_random_num"] = np.random.rand()
         df_simulation_table.loc[row_index, "inter_arrival_time"] = (
             0

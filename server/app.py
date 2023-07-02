@@ -26,6 +26,7 @@ def get_interarrival_lookup_table():
 def get_complete_simulation():
     print(request.args)
     num_of_servers = eval(request.args.get("numOfServers"))
+    num_of_observations = eval(request.args.get("numOfObservations"))
     arrival_dist_type = eval(request.args.get("arrivalDistType"))
     arrival_mean = eval(request.args.get("meanArrival"))
     service_dist_type = eval(request.args.get("serviceDistType"))
@@ -35,6 +36,7 @@ def get_complete_simulation():
 
     simulation_table, servers, averages = construct_simulation_table(
         num_of_servers,
+        num_of_observations,
         arrival_dist_type,
         arrival_mean,
         service_dist_type,

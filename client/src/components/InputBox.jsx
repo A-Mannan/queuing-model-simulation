@@ -4,7 +4,7 @@ import {
   UNIFORM_DIST,
   GAMMA_DIST,
 } from "../../utils/constants";
-import { inputStyle, labelStyle } from "../../styles";
+import { inputStyle, labelStyle } from "../styles";
 
 const InputBox = ({
   displayResult,
@@ -24,13 +24,13 @@ const InputBox = ({
       <div className="relative md:w-2/6 w-5/6">
         <label
           htmlFor="arrival-dist-select"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           TYPE OF ARRIVAL DISTRIBUTION
         </label>
         <select
           id="arrival-dist-select"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           onChange={(event) => {
             updateArrivalDistType(event.target.value);
           }}
@@ -48,14 +48,14 @@ const InputBox = ({
         <input
           type="number"
           id="mean-arrival"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           placeholder=" "
           onChange={(event) => updateMeanArrival(event.target.value)}
           disabled={displayResult}
         />
         <label
           htmlFor="mean-arrival"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           MEAN OF ARRIVAL
         </label>
@@ -66,7 +66,7 @@ const InputBox = ({
           <input
             type="number"
             id="var-arrival"
-            className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+            className={inputStyle}
             placeholder=" "
             onChange={(event) => {
               updateVarianceArrival(event.target.value);
@@ -75,7 +75,7 @@ const InputBox = ({
           />
           <label
             htmlFor="var-arrival"
-            className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            className={labelStyle}
           >
             VARIANCE OF ARRIVAL
           </label>
@@ -87,13 +87,13 @@ const InputBox = ({
       <div className="relative md:w-2/6 w-5/6">
         <label
           htmlFor="service-dist-select"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           TYPE OF SERVICE DISTRIBUTION
         </label>
         <select
           id="service-dist-select"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           onChange={(event) => updateServiceDistType(event.target.value)}
           disabled={displayResult}
         >
@@ -110,14 +110,14 @@ const InputBox = ({
         <input
           type="number"
           id="mean-service"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           placeholder=" "
           onChange={(event) => updateMeanService(event.target.value)}
           disabled={displayResult}
         />
         <label
           htmlFor="mean-service"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           MEAN OF SERVICE
         </label>
@@ -128,14 +128,14 @@ const InputBox = ({
           <input
             type="number"
             id="vari-service"
-            className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+            className={inputStyle}
             placeholder=" "
             onChange={(event) => updateVarianceService(event.target.value)}
             disabled={displayResult}
           />
           <label
             htmlFor="var-service"
-            className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+            className={labelStyle}
           >
             VARIANCE OF SERVICE
           </label>
@@ -148,14 +148,14 @@ const InputBox = ({
         <input
           type="number"
           id="num-of-servers"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           placeholder=" "
           onChange={(event) => updateNumofServers(event.target.value)}
           disabled={displayResult}
         />
         <label
           htmlFor="num-of-servers"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           NUMBER OF SERVERS
         </label>
@@ -164,14 +164,14 @@ const InputBox = ({
         <input
           type="number"
           id="num-of-observations"
-          className="px-2.5 pb-2.5 pt-4 w-full text-sm bg-transparent rounded-lg border-2 border-gray-900 text-black dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          className={inputStyle}
           placeholder=" "
           onChange={(event) => updateNumOfObservations(event.target.value)}
           disabled={displayResult}
         />
         <label
           htmlFor="num-of-observations"
-          className="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:bg-slate-600 peer-focus:px-2 peer-focus:text-gray-600 peer-focus:dark:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+          className={labelStyle}
         >
           NUMBER OF OBSERVATIONS
         </label>

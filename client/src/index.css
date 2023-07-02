@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Quicksand&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .peer-focus-bg {
+    --tw-peer-focus-bg-color: #884a39;
+  }
+}
+
+body {
+  background-color: #ffe6a7;
+}

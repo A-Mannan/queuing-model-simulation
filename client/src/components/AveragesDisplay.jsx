@@ -3,8 +3,8 @@ import { getAveragesAndUtilizationFactor } from "../../utils/simulationTable";
 
 const AveragesDisplay = ({averages}) => {
   return (
-    <div className="w-fit mx-auto">
-      <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside">
+    <div className="w-fit mx-auto text-primary">
+      <ul className="max-w-md space-y-1 font-quicksand list-disc list-inside ">
         {averages.map((item) => (
           <li>
             {item.name} : {item.value}
