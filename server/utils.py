@@ -65,17 +65,17 @@ def calculate_averages(df_simulation_table, num_of_servers):
         },
         {
             "name": "Length of system (Ls)",
-            "value": math.ceil(
+            "value": 
                 df_simulation_table.turn_around_time.sum()
                 / df_simulation_table.iloc[-1].end_time
-            ),
+            ,
         },
         {
             "name": "Length of queue (Lq)",
-            "value": math.ceil(
+            "value": 
                 df_simulation_table.wait_time.sum()
                 / df_simulation_table.iloc[-1].start_time
-            ),
+            ,
         },
         {
             "name": "Server Utilization",

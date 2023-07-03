@@ -12,12 +12,12 @@ def construct_avg_arrival_lookup_table(
     #  constructing Inter-Arrival Table Lookup
     arrival_table_index = 0
     last_cum_prob = 0
-    while last_cum_prob < 0.9999:
+    while last_cum_prob < 1:
         last_cum_prob = df_avg_arrival_time_lookup.loc[
             arrival_table_index, "cum_prob"
-        ] = calculate_cdf(
+        ] = round(calculate_cdf(
             arrival_table_index, arrival_dist_type, arrival_mean, arrival_variance
-        )
+        ),4)
         df_avg_arrival_time_lookup.loc[arrival_table_index, "cum_prob_lookup"] = (
             0
             if arrival_table_index == 0

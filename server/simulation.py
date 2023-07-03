@@ -65,27 +65,27 @@ def construct_simulation_table(
         )
         for server_index, server in enumerate(servers):
             if is_server_idle(arrival_time, server):
+                start_time = arrival_time
+                end_time = arrival_time + service_time
                 servers[server_index].append(
                     {
                         "id": row_index,
-                        "start": arrival_time,
-                        "end": arrival_time + service_time,
+                        "start": start_time,
+                        "end": end_time,
                     }
                 )
-                start_time = arrival_time
-                end_time = arrival_time + service_time
                 break
         else:
             min_time_server_index = find_server_index_with_min_time_left(servers)
+            start_time = servers[min_time_server_index][-1]["end"]
+            end_time = servers[min_time_server_index][-1]["end"] + service_time
             servers[min_time_server_index].append(
                 {
                     "id": row_index,
-                    "start": servers[min_time_server_index][-1]["end"],
-                    "end": servers[min_time_server_index][-1]["end"] + service_time,
+                    "start": start_time,
+                    "end": end_time,
                 }
             )
-            start_time = servers[min_time_server_index][-1]["end"]
-            end_time = servers[min_time_server_index][-1]["end"] + service_time
         df_simulation_table.loc[row_index, "start_time"] = start_time
         df_simulation_table.loc[row_index, "end_time"] = end_time
         df_simulation_table.loc[row_index, "turn_around_time"] = end_time - arrival_time
@@ -119,6 +119,7 @@ if __name__ == "__main__":
     # constructing complete simulation table
     df_simulation_table, servers, averages = construct_simulation_table(
         num_of_servers=num_of_servers,
+        num_of_observations=10,
         arrival_dist_type=arrival_type,
         arrival_mean=arrival_mean,
         service_dist_type=service_type,
