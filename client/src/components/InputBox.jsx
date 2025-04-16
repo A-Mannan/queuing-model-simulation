@@ -7,6 +7,8 @@ import {
 import { inputStyle, labelStyle } from "../styles";
 
 const InputBox = ({
+  form,
+  setForm,
   displayResult,
   updateMeanArrival,
   updateVarianceArrival,
@@ -19,21 +21,44 @@ const InputBox = ({
   updateServiceDistType,
   updateNumOfObservations,
 }) => {
+  const handleChange = (e) => {
+    const { target } = e;
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+    // console.log(form)
+  };
   return (
     <>
-      <div className="relative md:w-2/6 w-5/6">
-        <label
-          htmlFor="arrival-dist-select"
-          className={labelStyle}
+    <div className="relative md:w-2/6 w-5/6">
+      <select
+          id="isPriority"
+          className={inputStyle}
+          name="isPriority"
+          // onChange={(event) => {
+          //   updateArrivalDistType(event.target.value);
+          // }}
+          onChange={handleChange}
+          disabled={displayResult}
         >
+          <option value={0}>FIFO</option>
+          <option value={1}>Priority</option>
+        </select>
+      </div>
+      <div className="relative md:w-2/6 w-5/6">
+        <label htmlFor="arrival-dist-select" className={labelStyle}>
           TYPE OF ARRIVAL DISTRIBUTION
         </label>
         <select
           id="arrival-dist-select"
           className={inputStyle}
-          onChange={(event) => {
-            updateArrivalDistType(event.target.value);
-          }}
+          name="arrivalDistType"
+          // onChange={(event) => {
+          //   updateArrivalDistType(event.target.value);
+          // }}
+          onChange={handleChange}
           disabled={displayResult}
         >
           <option value={EXP_POIS_RAND_DIST}>Poisson</option>
@@ -48,15 +73,14 @@ const InputBox = ({
         <input
           type="number"
           id="mean-arrival"
+          name="meanArrival"
           className={inputStyle}
           placeholder=" "
-          onChange={(event) => updateMeanArrival(event.target.value)}
+          // onChange={(event) => updateMeanArrival(event.target.value)}
+          onChange={handleChange}
           disabled={displayResult}
         />
-        <label
-          htmlFor="mean-arrival"
-          className={labelStyle}
-        >
+        <label htmlFor="mean-arrival" className={labelStyle}>
           MEAN OF ARRIVAL
         </label>
       </div>
@@ -66,17 +90,16 @@ const InputBox = ({
           <input
             type="number"
             id="var-arrival"
+            name="varianceArrival"
             className={inputStyle}
             placeholder=" "
-            onChange={(event) => {
-              updateVarianceArrival(event.target.value);
-            }}
+            // onChange={(event) => {
+            //   updateVarianceArrival(event.target.value);
+            // }}
+            onChange={handleChange}
             disabled={displayResult}
           />
-          <label
-            htmlFor="var-arrival"
-            className={labelStyle}
-          >
+          <label htmlFor="var-arrival" className={labelStyle}>
             VARIANCE OF ARRIVAL
           </label>
         </div>
@@ -85,16 +108,15 @@ const InputBox = ({
       )}
 
       <div className="relative md:w-2/6 w-5/6">
-        <label
-          htmlFor="service-dist-select"
-          className={labelStyle}
-        >
+        <label htmlFor="service-dist-select" className={labelStyle}>
           TYPE OF SERVICE DISTRIBUTION
         </label>
         <select
           id="service-dist-select"
           className={inputStyle}
-          onChange={(event) => updateServiceDistType(event.target.value)}
+          name="serviceDistType"
+          // onChange={(event) => updateServiceDistType(event.target.value)}
+          onChange={handleChange}
           disabled={displayResult}
         >
           <option value={EXP_POIS_RAND_DIST}>Poisson</option>
@@ -112,13 +134,12 @@ const InputBox = ({
           id="mean-service"
           className={inputStyle}
           placeholder=" "
-          onChange={(event) => updateMeanService(event.target.value)}
+          name="meanService"
+          // onChange={(event) => updateMeanService(event.target.value)}
+          onChange={handleChange}
           disabled={displayResult}
         />
-        <label
-          htmlFor="mean-service"
-          className={labelStyle}
-        >
+        <label htmlFor="mean-service" className={labelStyle}>
           MEAN OF SERVICE
         </label>
       </div>
@@ -128,15 +149,14 @@ const InputBox = ({
           <input
             type="number"
             id="vari-service"
+            name="varianceService"
             className={inputStyle}
             placeholder=" "
-            onChange={(event) => updateVarianceService(event.target.value)}
+            // onChange={(event) => updateVarianceService(event.target.value)}
+            onChange={handleChange}
             disabled={displayResult}
           />
-          <label
-            htmlFor="var-service"
-            className={labelStyle}
-          >
+          <label htmlFor="var-service" className={labelStyle}>
             VARIANCE OF SERVICE
           </label>
         </div>
@@ -148,34 +168,31 @@ const InputBox = ({
         <input
           type="number"
           id="num-of-servers"
+          name="numOfServers"
           className={inputStyle}
           placeholder=" "
-          onChange={(event) => updateNumofServers(event.target.value)}
+          // onChange={(event) => updateNumofServers(event.target.value)}
+          onChange={handleChange}
           disabled={displayResult}
         />
-        <label
-          htmlFor="num-of-servers"
-          className={labelStyle}
-        >
+        <label htmlFor="num-of-servers" className={labelStyle}>
           NUMBER OF SERVERS
         </label>
       </div>
-      <div className="relative md:w-2/6 sm:w-5/6">
+      {/* <div className="relative md:w-2/6 sm:w-5/6">
         <input
           type="number"
           id="num-of-observations"
           className={inputStyle}
           placeholder=" "
-          onChange={(event) => updateNumOfObservations(event.target.value)}
+          // onChange={(event) => updateNumOfObservations(event.target.value)}
+          onChange={handleChange}
           disabled={displayResult}
         />
-        <label
-          htmlFor="num-of-observations"
-          className={labelStyle}
-        >
+        <label htmlFor="num-of-observations" className={labelStyle}>
           NUMBER OF OBSERVATIONS
         </label>
-      </div>
+      </div> */}
     </>
   );
 };

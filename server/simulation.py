@@ -16,13 +16,13 @@ NUM_OF_RECORDS = 10
 
 def construct_simulation_table(
     num_of_servers,
-    num_of_observations,
     arrival_dist_type,
     arrival_mean,
     service_dist_type,
     service_mean,
     arrival_variance=None,
     service_variance=None,
+    num_of_observations=None,
 ):
     servers = [[] for _ in range(num_of_servers)]
     df_avg_arrival_time_lookup = construct_avg_arrival_lookup_table(
@@ -42,7 +42,7 @@ def construct_simulation_table(
         ]
     )
 
-    for row_index in range(num_of_observations):
+    for row_index in range(len(df_avg_arrival_time_lookup)):
         df_simulation_table.loc[row_index, "arrival_random_num"] = np.random.rand()
         df_simulation_table.loc[row_index, "inter_arrival_time"] = (
             0
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     print("#################################################################")
 
     num_of_servers = 2  # int(input("Enter number of servers: "))
-    arrival_mean = 2.15  # eval(input("Enter mean of arrival distribution: "))
+    arrival_mean = 3.15  # eval(input("Enter mean of arrival distribution: "))
     service_mean = 1.58  # eval(input("Enter mean of service distribution: "))
     arrival_type = 0
     service_type = 0
@@ -119,7 +119,6 @@ if __name__ == "__main__":
     # constructing complete simulation table
     df_simulation_table, servers, averages = construct_simulation_table(
         num_of_servers=num_of_servers,
-        num_of_observations=10,
         arrival_dist_type=arrival_type,
         arrival_mean=arrival_mean,
         service_dist_type=service_type,

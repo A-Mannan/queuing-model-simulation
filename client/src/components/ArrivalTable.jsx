@@ -2,7 +2,7 @@ import React from "react";
 import Table from "./Table";
 import { useEffect, useState } from "react";
 
-const ArrivalTable = (arrivalTableProps) => {
+const ArrivalTable = ({form}) => {
   const arrivalTableHeaders = [
     "Cumulative Prob. LookUp",
     "Cumulative Probability",
@@ -13,7 +13,7 @@ const ArrivalTable = (arrivalTableProps) => {
 
   const fetchArrivalTable = async () => {
     const endpointUrl = "http://127.0.0.1:5000/get-interarrival-lookup-table";
-    const queryString = new URLSearchParams(arrivalTableProps).toString();
+    const queryString = new URLSearchParams(form).toString();
     const urlWithQuery = `${endpointUrl}?${queryString}`;
     try {
       const response = await fetch(urlWithQuery, {

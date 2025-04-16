@@ -4,7 +4,7 @@ import GanttChart from "./GanttChart";
 import AveragesDisplay from "./AveragesDisplay";
 import { headingStyle } from "../styles";
 
-const SimulationTable = (simulationTableProps) => {
+const SimulationTable = ({form}) => {
   const simulationTableHeaders = [
     "Seq. No",
     "Random# for Arrival",
@@ -25,8 +25,9 @@ const SimulationTable = (simulationTableProps) => {
 
   const fetchSimulationTable = async () => {
     const endpointUrl = "http://127.0.0.1:5000/get-complete-simulation";
-    const queryString = new URLSearchParams(simulationTableProps).toString();
+    const queryString = new URLSearchParams(form).toString();
     const urlWithQuery = `${endpointUrl}?${queryString}`;
+    console.log(form)
     try {
       const response = await fetch(urlWithQuery, {
         method: "GET",

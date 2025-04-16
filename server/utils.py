@@ -2,6 +2,11 @@ import math
 from scipy import stats
 import constants as const
 import numpy as np
+import random
+
+
+def get_priority():
+    return random.randint(1,3)
 
 
 def get_service_time(
